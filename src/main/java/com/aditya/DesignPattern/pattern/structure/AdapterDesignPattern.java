@@ -65,8 +65,8 @@ public class AdapterDesignPattern {
         webDriver.selectElement();
 
         /*
-         * Here as we have 2 different driver and they 2 different methods but they work similarly.
-         * So to make them look similar , we have made one class to adapt accordingly as second class
+         * Here as we have 2 different driver and they have 2 different methods but they work similarly.
+         * So to make them look similar ,we have made one class to adapt accordingly as second class
          */
     }
 }
