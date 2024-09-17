@@ -1,4 +1,4 @@
-package com.aditya.DesignPattern.lld.carreservationsystem;
+package com.aditya.DesignPattern.lld.carReservationSystem;
 
 public class Reservation {
 

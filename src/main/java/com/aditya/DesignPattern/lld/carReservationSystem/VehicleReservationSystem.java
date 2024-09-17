@@ -1,4 +1,4 @@
-package com.aditya.DesignPattern.lld.carreservationsystem;
+package com.aditya.DesignPattern.lld.carReservationSystem;
 
 import java.util.List;
 
