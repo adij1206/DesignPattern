@@ -1,4 +1,4 @@
-package com.aditya.DesignPattern.rateLimitingAlgorithm.slidingWindowLogAlgorithm;
+package com.aditya.DesignPattern.rateLimitingAlgorithm.slidingWindowLog;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -22,7 +22,7 @@ public class SlidingWindow {
             queue.poll();
         }
 
-        if (queue.size() <= maxRequest) {
+        if (queue.size() < maxRequest) {
             queue.offer(currentTime);
             return true;
         }

@@ -1,11 +1,9 @@
 package com.aditya.DesignPattern.lld.parkinglot;
 
-import lombok.Data;
-
 import java.math.BigDecimal;
 
 
-public abstract class ParkingSlot <T extends ParkingSlot<T>>{
+public abstract class ParkingSlot {
 
     private String id;
     private Vehicle vehicle;
