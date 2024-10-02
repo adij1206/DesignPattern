@@ -5,6 +5,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * <p> The system should allow users to view the list of movies playing in different theaters. <p>
+ * <p>Users should be able to select a movie, theater, and show timing to book tickets.<p>
+ * <p>The system should display the seating arrangement of the selected show and allow users to choose seats.<p>
+ * <p>Users should be able to make payments and confirm their booking.<p>
+ * <p>The system should handle concurrent bookings and ensure seat availability is updated in real-time.<p>
+ * <p>The system should support different types of seats (e.g., normal, premium) and pricing.<p>
+ * <p>The system should allow theater administrators to add, update, and remove movies, shows, and seating arrangements.<p>
+ * <p>The system should be scalable to handle a large number of concurrent users and bookings.<p>
+ */
+
 public class Demo {
 
     public static void main(String[] args) {
