@@ -27,26 +27,54 @@ public class ElevatorService {
         this.elevator = new Elevator(buttons, 0, Direction.UP, true);
     }
 
-    public void pressButton(int floorNumber, Direction direction) {
-//        if (direction == Direction.UP && floorNumber < elevator.getCurrentFloor()) {
-//            pendingFloors.add(floorNumber);
-//        } else if (direction == Direction.DOWN && floorNumber > elevator.getCurrentFloor()) {
-//            pendingFloors.add(floorNumber);
-//        }
-//        else {
-            if (direction == Direction.UP) {
-                System.out.println("Adding Up Request to floor " + floorNumber);
+    public void pressButton(int floorNumber) {
+        if (elevator.getDirection().equals(Direction.UP)) {
+            if (elevator.getCurrentFloor()<floorNumber) {
                 ascendingFloors.add(floorNumber);
             } else {
-                System.out.println("Adding Down Request to floor " + floorNumber);
-                descendingFloors.add(floorNumber);
+                pendingFloors.add(floorNumber);
             }
-       // }
+        }
+
+        if (elevator.getDirection().equals(Direction.DOWN) ) {
+            if (elevator.getCurrentFloor()>floorNumber) {
+                descendingFloors.add(floorNumber);
+            } else {
+                pendingFloors.add(floorNumber);
+            }
+        }
+
+        if (!elevator.getActive()) {
+            elevator.setActive(true);
+        }
+    }
+
+    public void pressButton(int userCurrentFloorNumber, Direction direction) {
+        if (direction == Direction.UP && userCurrentFloorNumber < elevator.getCurrentFloor()) {
+            System.out.println("Adding Request in Pending Queue" + userCurrentFloorNumber);
+            pendingFloors.add(userCurrentFloorNumber);
+        } else if (direction == Direction.DOWN && userCurrentFloorNumber > elevator.getCurrentFloor()) {
+            System.out.println("Adding Request in Pending Queeu" + userCurrentFloorNumber);
+            pendingFloors.add(userCurrentFloorNumber);
+        }
+        else {
+            if (direction == Direction.UP) {
+                System.out.println("Adding Up Request to floor " + userCurrentFloorNumber);
+                ascendingFloors.add(userCurrentFloorNumber);
+            } else {
+                System.out.println("Adding Down Request to floor " + userCurrentFloorNumber);
+                descendingFloors.add(userCurrentFloorNumber);
+            }
+        }
+
+        if (!elevator.getActive()) {
+            elevator.setActive(true);
+        }
     }
 
     public void controlElevator() {
-        boolean isActive = elevator.getActive();
-        while (isActive) {
+//        boolean isActive = elevator.getActive();
+        while (true) {
 
             if (elevator.getDirection()==Direction.UP) {
 
@@ -57,15 +85,10 @@ public class ElevatorService {
                 }
 
                 while(!pendingFloors.isEmpty()) {
-                    ascendingFloors.add(pendingFloors.poll());
+                    descendingFloors.add(pendingFloors.poll());
                 }
 
                 elevator.setDirection(Direction.DOWN);
-
-                if (descendingFloors.isEmpty()) {
-                    isActive = false;
-                    elevator.setActive(false);
-                }
             } else {
                 while (!descendingFloors.isEmpty()) {
                     Integer floor = descendingFloors.poll();
@@ -74,15 +97,10 @@ public class ElevatorService {
                 }
 
                 while(!pendingFloors.isEmpty()) {
-                    descendingFloors.add(pendingFloors.poll());
+                    ascendingFloors.add(pendingFloors.poll());
                 }
 
                 elevator.setDirection(Direction.UP);
-
-                if (ascendingFloors.isEmpty()) {
-                    isActive = false;
-                    elevator.setActive(false);
-                }
             }
         }
     }

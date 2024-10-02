@@ -163,30 +163,32 @@ public class Thread {
     public static void main(String[] args) {
 
         java.lang.Thread t1 = new java.lang.Thread(() -> {
-            while (true) {
-                System.out.println("1");
-                if (turn) {
-                    extracted("Hello", false);
-                }
-
-            }
+            System.out.println("1" +  java.lang.Thread.currentThread().getName());
+//            while (true) {
+//                System.out.println("1" +  java.lang.Thread.currentThread().getName());
+//                if (turn) {
+//                    extracted("Hello", false);
+//                }
+//
+//            }
 
         });
 
         java.lang.Thread t2 = new java.lang.Thread(() -> {
-            while (true) {
-                System.out.println("2");
-
-                if (!turn) {
-                    extracted("World", true);
-                }
-
-            }
+            System.out.println("2" + java.lang.Thread.currentThread().getName());
+//            while (true) {
+//                System.out.println("2" + java.lang.Thread.currentThread().getName());
+//
+//                if (!turn) {
+//                    extracted("World", true);
+//                }
+//
+//            }
         });
 
-
+        System.out.println("3" + java.lang.Thread.currentThread().getName());
         t1.start();
-        t2.start();
+        t2.run();
     }
 
     private static void extracted(String Hello, boolean a) {
