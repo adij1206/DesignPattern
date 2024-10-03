@@ -2,6 +2,16 @@ package com.aditya.DesignPattern.lld.foodDeliverySystem;
 
 import java.util.Arrays;
 
+/**
+ * <p>The food delivery service should allow customers to browse restaurants, view menus, and place orders.</p>
+ * <p> Restaurants should be able to manage their menus, prices, and availability.</p>
+ * <p>Delivery agents should be able to accept and fulfill orders.</p>
+ * <p>The system should handle order tracking and status updates.</p>
+ * <p>The system should support multiple payment methods.</p>
+ * <p>The system should handle concurrent orders and ensure data consistency.</p>
+ * <p>The system should be scalable and handle a high volume of orders.</p>
+ * <p>The system should provide real-time notifications to customers, restaurants, and delivery agents.</p>
+ */
 public class Demo {
 
     public static void main(String[] args) throws InterruptedException {

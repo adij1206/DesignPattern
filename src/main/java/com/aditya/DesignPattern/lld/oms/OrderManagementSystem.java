@@ -30,17 +30,17 @@ public class OrderManagementSystem {
         return vehicleService.getAllAvailableVehicle();
     }
 
-//    public Order placeOrder(List<String> vehicleIds, String userId) {
-//        boolean validateIfVehicleIsPresent = vehicleService.validateIfVehicleIsPresent(vehicleIds);
-//
-//        if (!validateIfVehicleIsPresent) {
-//            throw new RuntimeException("Vehicle Not available");
-//        }
-//
-//        double totalPrice = vehicleService.getTotalAmount(vehicleIds);
-//
-//        return orderService.createOrder(generateOrderID(), userId, vehicleIds, totalPrice);
-//    }
+    //    public Order placeOrder(List<String> vehicleIds, String userId) {
+    //        boolean validateIfVehicleIsPresent = vehicleService.validateIfVehicleIsPresent(vehicleIds);
+    //
+    //        if (!validateIfVehicleIsPresent) {
+    //            throw new RuntimeException("Vehicle Not available");
+    //        }
+    //
+    //        double totalPrice = vehicleService.getTotalAmount(vehicleIds);
+    //
+    //        return orderService.createOrder(generateOrderID(), userId, vehicleIds, totalPrice);
+    //    }
 
     public Order placeOrderV2(List<String> vehicleIds, String userId) {
         CompletableFuture<Boolean> vehicleFuture = validateVehicle(vehicleIds);
@@ -85,33 +85,33 @@ public class OrderManagementSystem {
 
         int maximum = 0;
 
-        for (int i=0;i<n;i++) {
+        for (int i = 0; i < n; i++) {
 
             int leftMax = -1;
-            for (int j=0;j<=i;j++) {
-                if (height[j]>leftMax) {
+            for (int j = 0; j <= i; j++) {
+                if (height[j] > leftMax) {
                     leftMax = height[j];
                 }
             }
 
             int rightMax = -1;
-            for (int j = n-1;j>=i;j--) {
-                if (height[j]>rightMax) {
+            for (int j = n - 1; j >= i; j--) {
+                if (height[j] > rightMax) {
                     rightMax = height[j];
                 }
             }
 
-            int sum = Math.min(leftMax, rightMax)-height[i];
-            maximum+=sum;
+            int sum = Math.min(leftMax, rightMax) - height[i];
+            maximum += sum;
         }
 
         return maximum;
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{4,2,0,3,2,5};
+        int[] arr = new int[]{4, 2, 0, 3, 2, 5};
 
 
-         System.out.println(getMaximumWaterStored(arr));
+        System.out.println(getMaximumWaterStored(arr));
     }
 }
