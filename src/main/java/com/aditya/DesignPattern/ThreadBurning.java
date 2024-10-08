@@ -2,8 +2,8 @@ package com.aditya.DesignPattern;
 
 public class ThreadBurning {
 
-    private static Integer timer = 0;
-    private static Integer lock = 0;
+    private static volatile Integer timer = 0;
+    private static final Object lock = new Object();
 
     public static void main(String[] args) {
         java.lang.Thread thread1 = new java.lang.Thread(new Runnable() {
@@ -11,6 +11,7 @@ public class ThreadBurning {
             public void run() {
                 synchronized (lock) {
                     burnThread(timer, 60);
+                    System.out.println("Thread1");
                     lock.notify();
                 }
             }
@@ -21,7 +22,9 @@ public class ThreadBurning {
             public void run() {
                 synchronized (lock) {
                     try {
-                        lock.wait();
+                        while (timer < 30) {
+                            lock.wait();
+                        }
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
