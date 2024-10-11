@@ -17,4 +17,9 @@ public class Publisher {
         Message message = new Message(content);
         topic.addMessage(message);
     }
+
+    public void publishMessage(Broker broker, String topic, String content) {
+        Message message = new Message(content);
+        broker.publishMessage(topic, message);
+    }
 }

@@ -32,4 +32,32 @@ public class Broker {
     public TopicWithOffset getTopicWithOffset(String name) {
         return topicWithOffSetMap.get(name);
     }
+
+    public void publishMessage(String topic, Message message) {
+        TopicWithOffset topicObj = topicWithOffSetMap.get(topic);
+        if (topicObj == null) {
+            System.out.println("Topic " + topic + " not found");
+            return;
+        }
+
+        topicObj.addMessage(message);
+    }
+
+
+    public Message getMessageByOffset(int offset, String topicName) {
+        TopicWithOffset topicObj = topicWithOffSetMap.get(topicName);
+
+        return topicObj.getMessageByOffset(offset);
+    }
+
+    public int getOffset(String topicName, String subscriberName) {
+        TopicWithOffset topicObj = topicWithOffSetMap.get(topicName);
+        return topicObj.getSubscriptionOffset(subscriberName);
+    }
+
+    public void updateOffset(String topicName, String subscriberName, int offset) {
+        TopicWithOffset topicObj = topicWithOffSetMap.get(topicName);
+
+        topicObj.updateOffset(subscriberName, offset);
+    }
 }

@@ -10,11 +10,17 @@ public class TopicWithOffset {
     private String name;
     private List<Message> messageList;
     private Map<Subscriber, Integer> subscriberOffsetMap;
+    private Map<String, Integer> subscriptionOffsetMap;
 
     public TopicWithOffset(String name) {
         this.name = name;
         this.messageList = new ArrayList<>();
         this.subscriberOffsetMap = new HashMap<>();
+        this.subscriptionOffsetMap = new HashMap<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void addMessage(Message message) {
@@ -35,5 +41,13 @@ public class TopicWithOffset {
 
     public void updateOffset(Subscriber subscriber, int offset) {
         subscriberOffsetMap.put(subscriber, offset);
+    }
+
+    public int getSubscriptionOffset(String subscriber) {
+        return subscriptionOffsetMap.getOrDefault(subscriber, 0);
+    }
+
+    public void updateOffset(String subscriberName, int offset) {
+        subscriptionOffsetMap.put(subscriberName, offset);
     }
 }

@@ -1,11 +1,16 @@
 package com.aditya.DesignPattern.lld.pubSubSystem;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Subscriber {
 
     private String name;
+    private Map<String, Thread> stringThreadMap;
 
     public Subscriber(String name) {
         this.name = name;
+        stringThreadMap = new HashMap<String, Thread>();
     }
 
     public void subscribe(Topic topic) {
@@ -23,17 +28,40 @@ public class Subscriber {
         }).start();
     }
 
-    public void subscribeWithOffset(TopicWithOffset topic) {
-        new Thread(() -> {
-            while (true) {
-                int offset = topic.getOffset(Subscriber.this);
+//    public void subscribeWithOffset(TopicWithOffset topic) {
+//        new Thread(() -> {
+//            while (true) {
+//                int offset = topic.getOffset(Subscriber.this);
+//
+//                Message messageByOffset = topic.getMessageByOffset(offset);
+//                if (messageByOffset != null) {
+//                    System.out.println(messageByOffset.content);
+//                    topic.updateOffset(Subscriber.this, offset + 1);
+//                }
+//            }
+//        }).start();
+//    }
 
-                Message messageByOffset = topic.getMessageByOffset(offset);
+    public void subscribeWithOffset(Broker broker, String topic) {
+        Thread thread = new Thread(() -> {
+            while (true) {
+                int offset = broker.getOffset(topic, this.name);
+
+                Message messageByOffset = broker.getMessageByOffset( offset, topic);
                 if (messageByOffset != null) {
                     System.out.println(messageByOffset.content);
-                    topic.updateOffset(Subscriber.this, offset + 1);
+                    broker.updateOffset(topic, this.name, offset + 1);
                 }
             }
-        }).start();
+        });
+
+        stringThreadMap.put(topic, thread);
+        thread.start();
+    }
+
+    public void unsubscribe(String topic) {
+        Thread thread = stringThreadMap.get(topic);
+        thread.stop();
+        stringThreadMap.remove(topic);
     }
 }
