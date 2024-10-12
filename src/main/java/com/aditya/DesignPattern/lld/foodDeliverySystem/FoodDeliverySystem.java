@@ -61,7 +61,7 @@ public class FoodDeliverySystem {
 
             double totalAmount = calculateTotalAmount(orderItems, selectedMenuItem);
 
-            Order order = new Order(restaurantId, orderItems, totalAmount);
+            Order order = new Order(restaurantId, orderItems, totalAmount, customerId);
             orderService.addOrder(order);
 
             return order;
@@ -94,7 +94,7 @@ public class FoodDeliverySystem {
                 return;
             }
 
-            deliveryAgent.setAvailable(false);
+            deliveryAgentService.updateDeliveryAgentAvailability(deliveryAgent.getId(), false);
             System.out.println("Delivery Agent Assigned, id " + deliveryAgent.getId());
         } else {
             System.out.println("No deliveryAgent found for orderId: " + orderId);

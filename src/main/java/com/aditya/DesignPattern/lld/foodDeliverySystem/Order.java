@@ -17,12 +17,13 @@ public class Order {
     private String status;
     private String deliveryAgentId;
 
-    public Order(String restaurantId, List<OrderItem> orderItems, double totalAmount) {
+    public Order(String restaurantId, List<OrderItem> orderItems, double totalAmount, String customerId) {
         this.orderId = UUID.randomUUID().toString();
         this.restaurantId = restaurantId;
         this.orderDate = System.currentTimeMillis();
         this.orderItems = orderItems;
         this.totalAmount = totalAmount;
         this.status = OrderStatus.CREATED.name();
+        this.customerId = customerId;
     }
 }

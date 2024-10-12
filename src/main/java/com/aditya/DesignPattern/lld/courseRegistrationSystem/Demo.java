@@ -36,12 +36,12 @@ public class Demo {
         System.out.println("Course : " + courseRegistrationSystem.getCourseByName("English"));
         System.out.println("Course : " + courseRegistrationSystem.getCourse(course.getCourseCode()));
 
-//        Registration registration = courseRegistrationSystem.enrollStudentToCourse(
-//                course.getCourseCode(), student1.getId());
-//        Registration registration1 = courseRegistrationSystem.enrollStudentToCourse(
-//                course.getCourseCode(), student2.getId());
-//        Registration registration2 = courseRegistrationSystem.enrollStudentToCourse(
-//                course.getCourseCode(), student3.getId());
+        //        Registration registration = courseRegistrationSystem.enrollStudentToCourse(
+        //                course.getCourseCode(), student1.getId());
+        //        Registration registration1 = courseRegistrationSystem.enrollStudentToCourse(
+        //                course.getCourseCode(), student2.getId());
+        //        Registration registration2 = courseRegistrationSystem.enrollStudentToCourse(
+        //                course.getCourseCode(), student3.getId());
 
         Thread thread1 = new Thread(new Runnable() {
             public void run() {
