@@ -10,7 +10,6 @@ public class ElevatorService {
     private Elevator elevator;
 
 
-
     public ElevatorService() {
         ascendingFloors = new PriorityQueue<>();
         descendingFloors = new PriorityQueue<>((a,b) -> b-a);

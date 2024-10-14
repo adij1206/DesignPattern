@@ -1,0 +1,14 @@
+{
+  "https://api.aditya.com": {
+    "payload": {
+      "key1": "value1",
+      "key2": "value2"
+    }
+  },
+  "https://api.aditya.com1": {
+    "payload": {
+      "key1": "value3",
+      "key2": "value4"
+    }
+  }
+}

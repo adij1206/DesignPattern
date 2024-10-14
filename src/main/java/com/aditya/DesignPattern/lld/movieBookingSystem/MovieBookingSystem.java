@@ -97,7 +97,9 @@ public class MovieBookingSystem {
         double amount = 0.0;
 
         for (Seat seat : showById.getSeatMap()) {
-            amount += seat.getPrice();
+            if (seatIds.contains(seat.getId())) {
+                amount += seat.getPrice();
+            }
         }
 
         return amount;

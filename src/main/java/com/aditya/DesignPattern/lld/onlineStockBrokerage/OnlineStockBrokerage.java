@@ -59,13 +59,13 @@ public class OnlineStockBrokerage {
         Stock stock = stockService.getStock(stockId);
 
         if (stock == null || stock.getQuantity() < quantity) {
-            System.out.println("We cannot add stock to the stock brokerage");
+            System.out.println("We cannot sell the stocks as quantity are not available");
             return;
         }
 
         Account account = accountService.getAccount(accountId);
         if (account.getBalance() < quantity * stock.getPrice()) {
-            System.out.println("We cannot add stock to the stock brokerage");
+            System.out.println("User cannot buy stock as insufficient balance");
             return;
         }
 

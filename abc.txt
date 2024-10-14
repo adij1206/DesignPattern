@@ -1,0 +1,8 @@
+https://api/aditya/com
+https://api/aditya/com
+https://api.aditya.com
+https://api.aditya.com
+/Users/adityaj/personal/DesignPattern/src/main/resources/payload.json
+https://api.aditya.com1
+https://api.aditya.com1
+https://api.aditya.com1

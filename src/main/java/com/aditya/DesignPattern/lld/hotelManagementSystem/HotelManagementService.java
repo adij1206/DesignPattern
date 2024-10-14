@@ -88,5 +88,6 @@ public class HotelManagementService {
         }
 
         reservationService.updateReservationStatus(reservation.getId(), ReservationStatus.CANCELLED);
+        roomService.updateRoomStatus(reservation.getRoomId(), RoomStatus.AVAILABLE);
     }
 }
